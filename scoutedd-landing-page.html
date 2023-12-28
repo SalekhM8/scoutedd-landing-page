@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scoutedd - Revolutionize Your Due Diligence</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5; /* Light background color */
+      color: #5bbad5; /* Baby blue color */
+    }
+
+    header {
+      background-color: #ffffff; /* White background color */
+      color: #5bbad5; /* Baby blue color */
+      text-align: center;
+      padding: 3.3em 0; /* Adjusted padding */
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* Adjusted alignment */
+      padding: 0 20px; /* Adjusted padding */
+    }
+
+    #logo {
+      width: 30px; /* Adjusted size */
+      height: 30px; /* Adjusted size */
+    }
+
+    .home-button {
+      text-decoration: none;
+      color: #5bbad5; /* Baby blue color */
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 192px auto; /* Adjusted margin-top */
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #5bbad5; /* Baby blue color */
+      font-weight: bold; /* Added font weight */
+    }
+
+    .line {
+      width: 80px;
+      height: 3px;
+      background-color: #5bbad5; /* Baby blue color */
+      margin: 10px 0;
+    }
+
+    .dropdown-content {
+      display: none;
+      padding-left: 20px;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .arrow-clickable:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-clickable,
+    .arrow-clickable {
+      cursor: pointer;
+    }
+
+    .arrow-down {
+      display: inline-block;
+      margin-left: 5px;
+      transform: rotate(90deg); /* Initial rotation */
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .dropdown-open .arrow-down {
+      transform: rotate(0deg); /* Rotate arrow when dropdown is open */
+    }
+
+    .wavy-line {
+      fill: none;
+      stroke: #5bbad5; /* Baby blue color */
+      stroke-width: 6; /* Adjusted stroke-width */
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      margin-top: 1.5in; /* Adjusted margin-top */
+    }
+
+    .left-footer,
+    .right-footer,
+    .bottom-footer {
+      text-align: center;
+    }
+
+    .left-footer p,
+    .right-footer p {
+      margin: 5px 0;
+    }
+
+    .middle-left {
+      position: absolute;
+      left: calc(50% - 202px); /* Adjusted position */
+    }
+
+    .middle-right {
+      position: absolute;
+      right: calc(50% - 201px); /* Adjusted position */
+    }
+
+    .bottom-footer {
+      margin-top: 1.5in; /* Adjusted margin-top */
+      text-align: center;
+    }
+
+    .email-subscription {
+      margin-top: 3in; /* Adjusted margin-top */
+      text-align: center;
+    }
+
+    .subscribe-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .email-input {
+      border: none;
+      border-bottom: 1px solid #5bbad5; /* Baby blue color */
+      margin-right: 10px;
+      padding: 5px;
+      outline: none;
+      color: #5bbad5; /* Baby blue color */
+    }
+
+    .subscribe-button {
+      background-color: #5bbad5; /* Baby blue color */
+      color: #ffffff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .moving-graphic {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      animation: waveAnimation 2s infinite linear;
+    }
+
+    @keyframes waveAnimation {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="#" class="home-button">home</a>
+    <img src="https://lordicon.com/ee242027-20a3-42a2-a90c-cb00e041d3d8" id="logo" alt="Scoutedd Logo">
+    <div class="line"></div>
+  </header>
+
+  <div class="container">
+    <div class="moving-graphic">
+      <!-- Replace this with your preferred graphic -->
+      <!-- <img src="your-graphic-url" alt="Moving Graphic"> -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+        <path fill="#5bbad5" d="M0 30c180 0 180 70 360 70s180-70 360-70 180 70 360 70 180-70 360-70 180 70 360 70 180-70 360-70" />
+      </svg>
+    </div>
+    <h2>angel or venture capitalist?</h2>
+    <p>Supercharge your sourcing and due diligence process with our revolutionary platform.</p>
+
+    <div class="line"></div>
+
+    <div class="dropdown dropdown-clickable" onclick="toggleDropdown()">
+      <h2 class="arrow-clickable">our offering<span class="arrow-down">&#9654;</span></h2>
+      <div class="dropdown-content" id="dropdownContent">
+        <ul>
+          <li>Access to high-quality deal flow (trained to scour and present from the widest of sources)</li>
+          <li>Comprehensive due diligence (neural network trained on millions of companies through 20 features)</li>
+          <li>Risk mitigation strategies (assigning ratings to startups)</li>
+          <li>Continuous monitoring and updates (regular update on performance of startups and relevant industry insights)
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="email-subscription">
+      <p>Be a design partner in our road to MVP and keep updated with news about <strong>our tech</strong>, processes, and
+        launch.</p>
+      <form class="subscribe-form">
+        <input type="email" class="email-input" placeholder="Your email">
+        <button type="submit" class="subscribe-button">subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <svg class="wavy-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 30">
+    <path
+      d="M0 10c180 0 180 20 360 20s180-20 360-20 180 20 360 20 180-20 360-20 180 20 360 20 180-20 360-20" />
+  </svg>
+
+  <div class="footer">
+    <div class="left-footer middle-left">
+      <p><strong>Location</strong></p>
+      <p style="font-size: 14px;">London</p>
+    </div>
+
+    <div class="right-footer middle-right">
+      <p><strong>Contact</strong></p>
+      <p style="font-size: 14px;">scouteddvc@gmail.com</p>
+    </div>
+  </div>
+
+  <div class="bottom-footer">
+    <p>Copyright © 2023 scoutedd ltd. All rights reserved.</p>
+  </div>
+
+  <script>
+    function toggleDropdown() {
+      var dropdownContent = document.getElementById("dropdownContent");
+      var dropdown = document.querySelector(".dropdown");
+      dropdown.classList.toggle("dropdown-open", !dropdown.classList.contains("dropdown-open"));
+      dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+    }
+  </script>
+
+</body>
+
+</html>
