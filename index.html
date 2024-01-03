@@ -305,6 +305,60 @@
     subscribe(); // Call the subscribe function
   });
 </script>
+<!-- Add this script block to the end of your HTML body -->
+<script>
+  function toggleDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    var dropdown = document.querySelector(".dropdown");
+    dropdown.classList.toggle("dropdown-open", !dropdown.classList.contains("dropdown-open"));
+    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+  }
+
+  // Function to handle form submission
+  function subscribe() {
+    var emailInput = document.querySelector(".email-input");
+    var email = emailInput.value;
+
+    // Perform basic email validation
+    if (isValidEmail(email)) {
+      // Send the email to your server using fetch
+      fetch('http://localhost:3000/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Handle the response from the server (if needed)
+          console.log(data);
+
+          // Clear the input field after successful submission
+          emailInput.value = "";
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    } else {
+      // Handle invalid email
+      alert('Invalid email address');
+    }
+  }
+
+  // Function to validate email format
+  function isValidEmail(email) {
+    // Implement your email validation logic here
+    // For simplicity, this example checks for the presence of '@'
+    return email.includes('@');
+  }
+
+  // Attach the subscribe function to the form submission
+  document.querySelector(".subscribe-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+    subscribe(); // Call the subscribe function
+  });
+</script>
 
 
 </body>
