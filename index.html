@@ -358,7 +358,12 @@
     event.preventDefault(); // Prevent the default form submission
     subscribe(); // Call the subscribe function
   });
-</script>
+  
+  function displaySuccessMessage() {
+  var successMessage = document.createElement("p");
+  successMessage.textContent = "You're in!";
+  successMessage.classList.add("subscribe-success");
+   document.querySelector(".email-subscription").appendChild(successMessage);
 
   <script>
   function toggleDropdown() {
