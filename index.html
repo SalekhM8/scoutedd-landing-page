@@ -360,6 +360,29 @@
   });
 </script>
 
+  <script>
+  function toggleDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    var dropdown = document.querySelector(".dropdown");
+    dropdown.classList.toggle("dropdown-open", !dropdown.classList.contains("dropdown-open"));
+    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var subscribeForm = document.querySelector(".subscribe-form");
+    var emailInput = document.querySelector(".email-input");
+
+    subscribeForm.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Add your logic here to send the email to your server or handle it as needed
+
+      // Clear the input field
+      emailInput.value = "";
+    });
+  });
+</script>
+
 
 </body>
   
