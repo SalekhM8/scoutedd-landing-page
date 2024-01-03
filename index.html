@@ -179,11 +179,11 @@
     }
   </style>
  <script>
-    function toggleDropdown() {
-      var dropdownContent = document.getElementById("dropdownContent");
-      var dropdown = document.querySelector(".dropdown");
-      dropdown.classList.toggle("dropdown-open", !dropdown.classList.contains("dropdown-open"));
-      dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+     function toggleDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    var dropdown = document.querySelector(".dropdown");
+    dropdown.classList.toggle("dropdown-open"); // Toggle the class directly
+    dropdownContent.style.display = (dropdown.classList.contains("dropdown-open")) ? "block" : "none";
     }
 
     // Function to handle form submission
