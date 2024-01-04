@@ -187,7 +187,7 @@
   }
 
   // Function to handle form submission
-  function subscribe() {
+  function subscribe(event) {
     var emailInput = document.querySelector(".email-input");
     var email = emailInput.value;
 
@@ -244,11 +244,9 @@
   }
 
   // Attach the subscribe function to the form submission
-  document.querySelector(".subscribe-form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
-    subscribe(); // Call the subscribe function
-  });
+  document.querySelector(".subscribe-form").addEventListener("submit", subscribe);
 </script>
+
 
 </head>
 
