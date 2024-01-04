@@ -178,65 +178,78 @@
       }
     }
   </style>
- <script>
-     function toggleDropdown() {
+<script>
+  function toggleDropdown() {
     var dropdownContent = document.getElementById("dropdownContent");
     var dropdown = document.querySelector(".dropdown");
-    dropdown.classList.toggle("dropdown-open"); // Toggle the class directly
+    dropdown.classList.toggle("dropdown-open");
     dropdownContent.style.display = (dropdown.classList.contains("dropdown-open")) ? "block" : "none";
-    }
+  }
 
-    // Function to handle form submission
-    function subscribe() {
-      var emailInput = document.querySelector(".email-input");
-      var email = emailInput.value;
+  // Function to handle form submission
+  function subscribe() {
+    var emailInput = document.querySelector(".email-input");
+    var email = emailInput.value;
 
-      // Perform basic email validation
-      if (isValidEmail(email)) {
-        // Send the email to your server using fetch
-        fetch('http://localhost:3009/subscribe', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email: email }),
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Perform basic email validation
+    if (isValidEmail(email)) {
+      // Send the email to your server using fetch
+      fetch('http://localhost:3009/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Handle the response from the server
+          console.log(data);
+
+          // Display success message
+          showSuccessMessage();
+
+          // Clear the input field after successful submission
+          emailInput.value = "";
         })
-          .then(response => response.json())
-          .then(data => {
-            // Handle the response from the server
-            console.log(data);
+        .catch(error => {
+          console.error('Error:', error);
 
-            // Display success message
-            alert("You're in!");
-
-            // Clear the input field after successful submission
-            emailInput.value = "";
-          })
-          .catch(error => {
-            console.error('Error:', error);
-
-            // Display error message (optional)
-            alert('Something went wrong. Please try again.');
-          });
-      } else {
-        // Handle invalid email
-        alert('Invalid email address');
-      }
+          // Display error message (optional)
+          alert('Something went wrong. Please try again.');
+        });
+    } else {
+      // Handle invalid email
+      alert('Invalid email address');
     }
+  }
 
-    // Function to validate email format
-    function isValidEmail(email) {
-      // Implement your email validation logic here
-      // For simplicity, this example checks for the presence of '@'
-      return email.includes('@');
-    }
+  function showSuccessMessage() {
+    // Create a new element for the success message
+    var successMessage = document.createElement("div");
+    successMessage.innerText = "You're in!";
+    successMessage.style.color = "#5bbad5"; // Set the color to match the theme
 
-    // Attach the subscribe function to the form submission
-    document.querySelector(".subscribe-form").addEventListener("submit", function (event) {
-      event.preventDefault(); // Prevent the default form submission
-      subscribe(); // Call the subscribe function
-    });
-  </script>
+    // Append the success message element after the form
+    var subscribeForm = document.querySelector(".subscribe-form");
+    subscribeForm.parentNode.insertBefore(successMessage, subscribeForm.nextSibling);
+  }
+
+  // Function to validate email format
+  function isValidEmail(email) {
+    return email.includes('@');
+  }
+
+  // Attach the subscribe function to the form submission
+  document.querySelector(".subscribe-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+    subscribe(); // Call the subscribe function
+  });
+</script>
+
 </head>
 
 <body>
