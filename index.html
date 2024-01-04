@@ -187,7 +187,7 @@
   }
 
   // Function to handle form submission
-  function subscribe(event) {
+  async function subscribe(event) {
     var emailInput = document.querySelector(".email-input");
     var email = emailInput.value;
 
@@ -196,17 +196,19 @@
 
     // Perform basic email validation
     if (isValidEmail(email)) {
-      // Send the email to your server using fetch
-      fetch('http://localhost:3009/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email }),
-      })
-        .then(response => response.json())
-        .then(data => {
+      try {
+        // Send the email to your server using fetch
+        const response = await fetch('http://localhost:3009/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email }),
+        });
+
+        if (response.ok) {
           // Handle the response from the server
+          const data = await response.json();
           console.log(data);
 
           // Display success message
@@ -214,13 +216,15 @@
 
           // Clear the input field after successful submission
           emailInput.value = "";
-        })
-        .catch(error => {
-          console.error('Error:', error);
+        } else {
+          throw new Error('Server response not OK');
+        }
+      } catch (error) {
+        console.error('Error:', error);
 
-          // Display error message (optional)
-          alert('Something went wrong. Please try again.');
-        });
+        // Display error message (optional)
+        alert('Something went wrong. Please try again.');
+      }
     } else {
       // Handle invalid email
       alert('Invalid email address');
