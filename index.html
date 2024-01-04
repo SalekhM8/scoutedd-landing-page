@@ -179,20 +179,10 @@
     }
   </style>
 <script>
-  function toggleDropdown() {
-    var dropdownContent = document.getElementById("dropdownContent");
-    var dropdown = document.querySelector(".dropdown");
-    dropdown.classList.toggle("dropdown-open");
-    dropdownContent.style.display = (dropdown.classList.contains("dropdown-open")) ? "block" : "none";
-  }
-
   // Function to handle form submission
-  async function subscribe(event) {
+  async function subscribe() {
     var emailInput = document.querySelector(".email-input");
     var email = emailInput.value;
-
-    // Prevent the default form submission
-    event.preventDefault();
 
     // Perform basic email validation
     if (isValidEmail(email)) {
@@ -231,6 +221,20 @@
     }
   }
 
+  // Function to validate email format
+  function isValidEmail(email) {
+    return email.includes('@');
+  }
+
+  // Attach the subscribe function to the button click
+  document.querySelector(".subscribe-button").addEventListener("click", function (event) {
+    // Prevent the default button click behavior
+    event.preventDefault();
+    
+    // Call the subscribe function
+    subscribe();
+  });
+
   function showSuccessMessage() {
     // Create a new element for the success message
     var successMessage = document.createElement("div");
@@ -241,14 +245,6 @@
     var subscribeForm = document.querySelector(".subscribe-form");
     subscribeForm.parentNode.insertBefore(successMessage, subscribeForm.nextSibling);
   }
-
-  // Function to validate email format
-  function isValidEmail(email) {
-    return email.includes('@');
-  }
-
-  // Attach the subscribe function to the form submission
-  document.querySelector(".subscribe-form").addEventListener("submit", subscribe);
 </script>
 
 
