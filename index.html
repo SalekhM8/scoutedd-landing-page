@@ -180,9 +180,13 @@
   </style>
 <script>
   // Function to handle form submission
-  async function subscribe() {
+  async function subscribe(event) {
     var emailInput = document.querySelector(".email-input");
     var email = emailInput.value;
+
+    // Prevent the default form submission
+    event.preventDefault();
+    event.stopPropagation();
 
     // Perform basic email validation
     if (isValidEmail(email)) {
@@ -226,25 +230,8 @@
     return email.includes('@');
   }
 
-  // Attach the subscribe function to the button click
-  document.querySelector(".subscribe-button").addEventListener("click", function (event) {
-    // Prevent the default button click behavior
-    event.preventDefault();
-    
-    // Call the subscribe function
-    subscribe();
-  });
-
-  function showSuccessMessage() {
-    // Create a new element for the success message
-    var successMessage = document.createElement("div");
-    successMessage.innerText = "You're in!";
-    successMessage.style.color = "#5bbad5"; // Set the color to match the theme
-
-    // Append the success message element after the form
-    var subscribeForm = document.querySelector(".subscribe-form");
-    subscribeForm.parentNode.insertBefore(successMessage, subscribeForm.nextSibling);
-  }
+  // Attach the subscribe function to the form submission
+  document.querySelector(".subscribe-form").addEventListener("submit", subscribe);
 </script>
 
 
